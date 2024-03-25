@@ -1,14 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Inventory Management System - Products</title>
-</head>
-<body>
-  <h1>Products</h1>
-  <ul>
-    {% for product in products %}
-      <li><a href="{% url 'product_update' product.pk %}">{{ product.name }}</a> ({{ product.quantity }})</li>  {% endfor %}
-  </ul>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Products</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description (Optional)</th>
+        <th>Category</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.unit_price }}</td>
+          <td>{{ product.stock.quantity }}  </td>  
+          <td>
+            <a href="{% url 'product_update' product.pk %}">Update</a> / 
+            <a href="{% url 'product_delete' product.pk %}">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   <a href="{% url 'product_create' %}">Add New Product</a>
-</body>
-</html>
+{% endblock %}
