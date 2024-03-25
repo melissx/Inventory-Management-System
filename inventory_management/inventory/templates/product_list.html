@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventory Management System - Products</title>
+</head>
+<body>
+  <h1>Products</h1>
+  <ul>
+    {% for product in products %}
+      <li><a href="{% url 'product_update' product.pk %}">{{ product.name }}</a> ({{ product.quantity }})</li>  {% endfor %}
+  </ul>
+  <a href="{% url 'product_create' %}">Add New Product</a>
+</body>
+</html>

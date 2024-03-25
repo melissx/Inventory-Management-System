@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventory Management System - Update Stock for {{ product.name }}</title>
+</head>
+<body>
+  <h1>Update Stock for {{ product.name }}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Stock</button>
+  </form>
+</body>
+</html>
